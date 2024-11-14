@@ -2,7 +2,7 @@
 
 The **Trails API** is a Flask-based RESTful service designed to manage trails, locations, user accounts, and access logs. The API supports CRUD operations for each entity and uses authentication to ensure secure access. This project features structured code with modular components, database configuration through environment variables, and interactive API documentation via Swagger.
 
-![Trails API](![alt text](image.png))
+![Trails API](/static/images/image.png)
 
 ## Features
 
