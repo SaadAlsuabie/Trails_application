@@ -65,7 +65,6 @@ class APPDB():
                         )
                     """)
                 self.conn.commit()
-                print(f"Table '{table_name}' created successfully.")
             else:
                 raise
             
@@ -79,7 +78,7 @@ class APPDB():
             trail_id = self.cursor.execute("SELECT SCOPE_IDENTITY()").fetchone()[0]
             return {'message': 'Trail created successfully', 'trail_id': trail_id}
         except Exception as e:
-            return {'error': str(e)}
+            return {'server error': str(e)}
 
 
     def get_trails(self):
@@ -89,7 +88,7 @@ class APPDB():
             trails = [dict(zip([column[0] for column in self.cursor.description], row)) for row in rows]
             return trails
         except Exception as e:
-            return {'error': str(e)}
+            return {'server error': str(e)}
 
     def get_trail(self, trail_id):
         try:
@@ -99,7 +98,7 @@ class APPDB():
                 return dict(zip([column[0] for column in self.cursor.description], row))
             return {'error': 'Trail not found'}
         except Exception as e:
-            return {'error': str(e)}
+            return {'server error': str(e)}
 
     def update_trail(self, trail_id, name, description):
         try:
@@ -111,7 +110,7 @@ class APPDB():
             self.conn.commit()
             return {'message': 'Trail updated successfully'}
         except Exception as e:
-            return {'error': str(e)}
+            return {'server error': str(e)}
 
     def delete_trail(self, trail_id):
         try:
@@ -119,7 +118,7 @@ class APPDB():
             self.conn.commit()
             return {'message': 'Trail deleted successfully'}
         except Exception as e:
-            return {'error': str(e)}
+            return {'server error': str(e)}
 
     def close_connection(self):
         self.cursor.close()

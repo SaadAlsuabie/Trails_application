@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, make_response
 from db import APPDB
 from flask_restful import Api, Resource
 from decorators import auth_required
@@ -28,18 +28,18 @@ class TrailList(Resource):
     def get(self):
         """Get all trails"""
         result = db_instance.get_trails()
-        if 'error' in result:
-            return jsonify(result), 500
-        return jsonify(result)
+        if 'server error' in result:
+            return make_response(jsonify({'Error': "INTERNAL SERVER ERROR"}), 500)
+        return make_response(jsonify(result), 200)
     
     @auth_required
     def post(self):
         """Create a new trail"""
         data = request.json
         result = db_instance.create_trail(data['name'], data['description'], data['owner_id'])
-        if 'error' in result:
-            return jsonify(result), 500
-        return jsonify(result), 201
+        if 'server error' in result:
+            return make_response(jsonify({'Error': "INTERNAL SERVER ERROR"}), 500)
+        return make_response(jsonify(result), 201)
 
 
 class Trail(Resource):
@@ -47,28 +47,30 @@ class Trail(Resource):
     def get(self, trail_id):
         """Get a single trail by ID"""
         result = db_instance.get_trail(trail_id)
-        if 'error' in result:
-            return jsonify(result), 500
+     
+        if 'server error' in result:
+            return make_response(jsonify({'Error': "INTERNAL SERVER ERROR"}), 500)
         if result is None:
-            return jsonify({'error': 'Trail not found'}), 404
-        return jsonify(result)
+            return make_response(jsonify({'error': 'Trail not found'}), 404)
+        
+        return make_response(jsonify(result), 200)
 
     @auth_required
     def put(self, trail_id):
         """Update a trail"""
         data = request.json
         result = db_instance.update_trail(trail_id, data['name'], data['description'])
-        if 'error' in result:
-            return jsonify(result), 500
-        return jsonify(result)
+        if 'server error' in result:
+            return make_response(jsonify({'Error': "INTERNAL SERVER ERROR"}), 500)
+        return make_response(jsonify(result), 200)
 
     @auth_required
     def delete(self, trail_id):
         """Delete a trail"""
         result = db_instance.delete_trail(trail_id)
-        if 'error' in result:
-            return jsonify(result), 500
-        return jsonify(result)
+        if 'server error' in result:
+            return make_response(jsonify({'Error': "INTERNAL SERVER ERROR"}), 500)
+        return make_response(jsonify(result), 200)
     
 
 api.add_resource(TrailList, '/trails')

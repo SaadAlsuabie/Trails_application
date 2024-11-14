@@ -1,0 +1,228 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "API documentation for Trails API",
+      "version": "1.0.0",
+      "title": "Trails API",
+      "contact": {
+        "email": "support@example.com"
+      }
+    },
+    "host": "localhost:5000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+      "/trails": {
+        "get": {
+          "summary": "Get all trails",
+          "description": "Returns a list of all trails",
+          "produces": ["application/json"],
+          "security": [{"basicAuth": []}],
+          "responses": {
+            "200": {
+              "description": "A list of trails",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Trail"
+                }
+              }
+            },
+            "401": {
+              "description": "Authentication failed"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "post": {
+          "summary": "Create a new trail",
+          "description": "Creates a new trail with the specified name, description, and owner ID",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "security": [{"basicAuth": []}],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Trail object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/NewTrail"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Trail created successfully",
+              "schema": {
+                "$ref": "#/definitions/Trail"
+              }
+            },
+            "401": {
+              "description": "Authentication failed"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      },
+      "/trails/{trail_id}": {
+        "get": {
+          "summary": "Get a trail by ID",
+          "description": "Returns a trail by its ID",
+          "produces": ["application/json"],
+          "security": [{"basicAuth": []}],
+          "parameters": [
+            {
+              "name": "trail_id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail details",
+              "schema": {
+                "$ref": "#/definitions/Trail"
+              }
+            },
+            "404": {
+              "description": "Trail not found"
+            },
+            "401": {
+              "description": "Authentication failed"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "put": {
+          "summary": "Update a trail",
+          "description": "Updates a trail's name and description",
+          "consumes": ["application/json"],
+          "produces": ["application/json"],
+          "security": [{"basicAuth": []}],
+          "parameters": [
+            {
+              "name": "trail_id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            },
+            {
+              "in": "body",
+              "name": "body",
+              "description": "Updated trail object",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/UpdatedTrail"
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail updated successfully"
+            },
+            "404": {
+              "description": "Trail not found"
+            },
+            "401": {
+              "description": "Authentication failed"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        },
+        "delete": {
+          "summary": "Delete a trail",
+          "description": "Deletes a trail by its ID",
+          "produces": ["application/json"],
+          "security": [{"basicAuth": []}],
+          "parameters": [
+            {
+              "name": "trail_id",
+              "in": "path",
+              "required": true,
+              "type": "integer"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Trail deleted successfully"
+            },
+            "404": {
+              "description": "Trail not found"
+            },
+            "401": {
+              "description": "Authentication failed"
+            },
+            "500": {
+              "description": "Internal server error"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Trail": {
+        "type": "object",
+        "properties": {
+          "trail_id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "created_date": {
+            "type": "string",
+            "format": "date"
+          },
+          "owner_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "NewTrail": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "owner_id": {
+            "type": "integer"
+          }
+        },
+        "required": ["name", "description", "owner_id"]
+      },
+      "UpdatedTrail": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": ["name", "description"]
+      }
+    },
+    "securityDefinitions": {
+      "basicAuth": {
+        "type": "basic"
+      }
+    }
+  }
+  
