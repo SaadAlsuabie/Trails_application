@@ -152,4 +152,4 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for more 
 
 ---
 
-The Trails API is designed to be secure, scalable, and easy to integrate with client applications. For more information on usage or development, please contact [support@example.com](mailto:support@example.com).
+The Trails API is designed to be secure, scalable, and easy to integrate with client applications. For more information on usage or development, please contact [alsuabies@gmail.com](mailto:alsuabies@gmail.com).
