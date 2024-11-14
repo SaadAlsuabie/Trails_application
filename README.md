@@ -2,7 +2,7 @@
 
 The **Trails API** is a Flask-based RESTful service designed to manage trails, locations, user accounts, and access logs. The API supports CRUD operations for each entity and uses authentication to ensure secure access. This project features structured code with modular components, database configuration through environment variables, and interactive API documentation via Swagger.
 
-![Trails API](https://via.placeholder.com/800x400.png?text=Trails+API)
+![Trails API](![alt text](image.png))
 
 ## Features
 
@@ -27,8 +27,8 @@ The **Trails API** is a Flask-based RESTful service designed to manage trails, l
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/trails-api.git
-   cd trails-api
+   git clone https://github.com/SaadAlsuabie/Trails_application.git
+   cd Trails_application
    ```
 
 2. Install the required Python packages:
