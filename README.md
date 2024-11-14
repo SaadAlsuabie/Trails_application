@@ -135,13 +135,12 @@ Deploy the Trails API on a server and ensure the following:
 ![Authentication](static/images/swagger_authentication.png)
 
 ### Swagger API Documentation
-![Swagger UI](https://via.placeholder.com/800x400.png?text=Swagger+UI+Documentation)
-![alt text](static/images/swagger_screen_shot_1.png)
-![alt text](static/images/swagger_screen_shot_2.png)
-![alt text](static/images/swagger_screen_shot_3.png)
-![alt text](static/images/swagger_screen_shot_4.png)
-![alt text](static/images/swagger_screen_shot_5.png)
-![alt text](static/images/swagger_screen_shot_6.png)
+![Swagger UI](static/images/swagger_screen_shot_1.png)
+![Swagger UI](static/images/swagger_screen_shot_2.png)
+![Swagger UI](static/images/swagger_screen_shot_3.png)
+![Swagger UI](static/images/swagger_screen_shot_4.png)
+![Swagger UI](static/images/swagger_screen_shot_5.png)
+![Swagger UI](static/images/swagger_screen_shot_6.png)
 ## License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for more information.
