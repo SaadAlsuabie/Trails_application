@@ -147,8 +147,8 @@ This project is licensed under the MIT License. See [LICENSE](LICENSE) for more 
 
 ## Additional Resources
 
-- [Flask Documentation](https://flask.palletsprojects.com/)
-- [Swagger UI](https://swagger.io/tools/swagger-ui/)
+- ![Flask](https://img.shields.io/badge/Flask-2.1.2-blue) [Flask Documentation](https://flask.palletsprojects.com/)
+- ![Swagger](https://img.shields.io/badge/Swagger-2.0-green) [Swagger UI](https://swagger.io/tools/swagger-ui/)
 
 ---
 
